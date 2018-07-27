@@ -149,17 +149,6 @@
                                             </li>
                                             <li><a href="contact.html">HUBUNGI KAMI</a></li>
                                             <li><a href="#">PAGES</a>
-                                                <ul class="dorp-menu">
-                                                    <li><a href="about.html">About</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="cart-page.html">Cart Page</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
-                                                    <li><a href="product-details.html">Product Details</a></li>
-                                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                    <li><a href="shop-grid-sidebar.html">Shop Grid Sidebar</a></li>
-                                                    <li><a href="404.html">404</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

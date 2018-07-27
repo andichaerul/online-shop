@@ -1,3 +1,4 @@
+<?php include 'konfigurasi.php' ?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set("Asia/Jakarta");
@@ -24,7 +25,7 @@ date_default_timezone_set("Asia/Jakarta");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/online-shop';
+$config['base_url'] = $editor['baseurl'];
 
 /*
 |--------------------------------------------------------------------------

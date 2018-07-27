@@ -1,0 +1,11 @@
+<?php
+$editor = array
+	(
+	// Isikan Base URL
+	"baseurl"=>"http://localhost/online-shop",
+
+	// Database
+	"hostdb"=>"localhost",
+
+	);
+?>
