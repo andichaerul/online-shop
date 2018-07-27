@@ -247,6 +247,13 @@ class Home extends CI_Controller {
 	}
 	public function subscribe(){
 		$this->connect->subscribe();
+		redirect($_SERVER['HTTP_REFERER']);
 	}
+	public function subscribe_add(){
+		$this->connect->subscribe_add();
+		echo "Terima kasih pendaftaran langganan info anda telah berhasil";
+	}
+
+
 
 }

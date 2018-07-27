@@ -174,5 +174,13 @@ class Connect extends CI_Model{
    				 echo 'Success to send email';   
   				 }  
 		}
+		function subscribe_add(){
+		$email = $this->input->get('email');	
+		$data = array(
+	        'email' => $email,
+			);
+		$this->db->insert('subscribe', $data);
+		}
+
 		
 }
