@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?php echo "".$title."" ?></title>
     <!-- Mobile Specific Meta  -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Google Fonts -->

@@ -116,6 +116,7 @@ class Home extends CI_Controller {
 		$this->load->view('cost_ongkir');
 	}
 	public function checkout(){
+		$item['category'] = $this->connect->category();
 		$item['title'] = 'Pembayaran';
 		$item['count_cart'] = $this->cart->contents();
 		$item['list_belanja'] = $this->connect->load_form_pembelian();
@@ -124,6 +125,7 @@ class Home extends CI_Controller {
 		$this->load->view('checkout/form_checkout',$item);
 	}
 	public function shop_grid(){
+		$item['category'] = $this->connect->category();
 		$item['title'] = 'Daftar produk';
 		$data['tentang_kami'] = $this->connect->tentang_kami();
 		$item['count_cart'] = $this->cart->contents();
