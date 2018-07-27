@@ -71,7 +71,7 @@
                             <div class="star star-on"></div>
                             <div class="star star-half"></div>
                         </div>-->
-                        <h3 class="prodet-price"><?php echo "".$Price."" ?></h3>
+                        <h3 class="prodet-price"><?php echo "IDR ".number_format($row->Price,0,',','.')."" ?></h3>
                         <p><?php echo "".$Description."" ?></p>
                         <!--<div class="size-widget prodet-size">
                             <h4>Size</h4>
