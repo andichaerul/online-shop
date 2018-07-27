@@ -7,3 +7,4 @@ $this->load->view('email/subscribe/body_subscribe',$data);
 $this->load->view('index/service');
 $this->load->view('footer',$data);
 ?>
+teting perubahan
