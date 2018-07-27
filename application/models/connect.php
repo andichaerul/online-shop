@@ -101,7 +101,7 @@ class Connect extends CI_Model{
       		'smtp_host' => 'ssl://smtp.gmail.com',
       		'smtp_port' => 465,
       		'smtp_user' => 'andichaerul85@gmail.com', //isi dengan gmailmu!
-      		'smtp_pass' => 'birakomputer1', //isi dengan password gmailmu!
+      		'smtp_pass' => 'birakomputer4812519', //isi dengan password gmailmu!
       		'mailtype' => 'html',
       		'charset' => 'iso-8859-1',
       		'wordwrap' => TRUE

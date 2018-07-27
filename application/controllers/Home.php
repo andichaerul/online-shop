@@ -30,12 +30,6 @@ class Home extends CI_Controller {
 		$this->load->view('footer',$data);
 
 	}
-	public function view_product(){
-		$data['tentang_kami'] = $this->connect->tentang_kami();
-		$this->load->view('home');
-		$this->load->view('view_product');
-		$this->load->view('footer',$data);
-	}
 
 	public function more_detail(){
 		$item['title'] = 'Detail Product';
@@ -99,15 +93,6 @@ class Home extends CI_Controller {
 	}
 	public function cart_calculate(){
 		$this->load->view('cart_calculate');
-	}
-	public function form_pembelian(){
-		$data['tentang_kami'] = $this->connect->tentang_kami();
-		$item['list_belanja'] = $this->connect->load_form_pembelian();
-		$item['count_cart'] = $this->cart->contents();
-		$this->load->view('home',$item);
-		$this->load->view('slide');
-		$this->load->view('form_pembelian');
-		$this->load->view('footer',$data);
 	}
 	public function request_city(){
 		$this->load->view('request_city');
