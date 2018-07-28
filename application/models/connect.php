@@ -71,6 +71,7 @@ class Connect extends CI_Model{
         return $data->result();
 	}
 	function retur_produk(){
+		include 'application/konfigurasi.php';
 		$nama = $this->input->post('nama');
 		$noorder = $this->input->post('noorder');
 		$catatan = $this->input->post('catatan');
@@ -98,7 +99,7 @@ class Connect extends CI_Model{
 			$subject = 'Retur Produk No Order '.$noorder.'';
 			$config = Array(
       		'protocol' => 'smtp',
-      		'smtp_host' => 'ssl://smtp.gmail.com',
+      		'smtp_host' => $editor['smtp_host'],
       		'smtp_port' => 465,
       		'smtp_user' => 'andichaerul85@gmail.com', //isi dengan gmailmu!
       		'smtp_pass' => 'birakomputer4812519', //isi dengan password gmailmu!

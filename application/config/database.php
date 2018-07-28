@@ -1,4 +1,4 @@
-<?php include 'konfigurasi.php' ?>
+<?php include 'application/konfigurasi.php' ?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 

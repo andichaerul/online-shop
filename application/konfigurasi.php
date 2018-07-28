@@ -7,5 +7,8 @@ $editor = array
 	// Database
 	"hostdb"=>"localhost",
 
+	// Email
+	"smtp_host"=>"ssl://smtp.gmail.com",
+
 	);
 ?>
