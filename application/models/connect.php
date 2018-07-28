@@ -45,7 +45,11 @@ class Connect extends CI_Model{
 	}
 	function load_form_pembelian(){
 		$idproduct = $_POST['id'];
-		foreach ($idproduct as $row) {
+		if ($idproduct == "") {
+			header("Location: ".base_url()."");
+		}
+		else {
+			foreach ($idproduct as $row) {
 			$id[] = $row; 
 		};
 		$this->db->select('*');
@@ -53,7 +57,11 @@ class Connect extends CI_Model{
 		$this->db->where_in('ProductID',$id);
 		$data = $this->db->get();
         return $data->result();
+		}
 	}
+		
+		
+	
 	function category_item(){
 		$id = $this->input->get('id');
 		$this->db->select('*');
