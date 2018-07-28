@@ -200,7 +200,8 @@ $(document).ready(function(){
       var origin = '151';
       var weight = $( "#weight-total" ).val();;
       var courier = $("#courier").val(); 
-      console.log(city); 
+      console.log(city);
+      $("#results-service-courier").delay("slow").fadeIn(); 
       $("#results-service-courier").load("cost_ongkir?origin=" + origin + "&destination=" + destination + "&weight=" + weight + "&courier=" + courier + "");
     });
 });
