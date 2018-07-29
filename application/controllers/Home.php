@@ -104,9 +104,17 @@ class Home extends CI_Controller {
 		$item['title'] = 'Pembayaran';
 		$item['count_cart'] = $this->cart->contents();
 		$item['list_belanja'] = $this->connect->load_form_pembelian();
+		$item['item_cart'] = $this->cart->contents();
 		$this->load->view('head',$item);
 		$this->load->view('checkout/banner');
 		$this->load->view('checkout/form_checkout',$item);
+	}
+	public function payment(){
+		$this->connect->order_table();
+		$item['category'] = $this->connect->category();
+		$item['title'] = 'Pembayaran';
+		$item['count_cart'] = $this->cart->contents();
+		$this->load->view('head',$item);
 	}
 	public function shop_grid(){
 		$item['category'] = $this->connect->category();

@@ -60,8 +60,6 @@ class Connect extends CI_Model{
 		}
 	}
 		
-		
-	
 	function category_item(){
 		$id = $this->input->get('id');
 		$this->db->select('*');
@@ -190,6 +188,35 @@ class Connect extends CI_Model{
 			);
 		$this->db->insert('subscribe', $data);
 		}
+		function order_table(){
+		$ProductID = $this->input->post('ProductID');
+		$qty = $this->input->post('qty');
+		$sisastock = $this->input->post('Sisa');
+		$PriceAmount = $this->input->post('PriceAmount');
+
+		print_r($ProductID);	
+		$count = count($ProductID);
+			for ($x = 0; $x < $count; $x++) {
+    		$data = array(
+
+        	'ProductID' => $ProductID[$x],
+        	'Qty' => $qty[$x],
+
+			);
+			$this->db->insert('order', $data);
+			}
+			//Update Stock ketika user order
+			for ($x = 0; $x < $count; $x++) {
+    		$ProductID[$x] = $ProductID[$x];
+    		$data = array(
+        	'Stock' => $sisastock[$x],
+			);
+			$this->db->where('ProductID', $ProductID[$x]);
+			$this->db->update('product', $data);
+			}	
+
+		} 
+
 
 		
 }

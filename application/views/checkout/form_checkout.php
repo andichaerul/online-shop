@@ -87,6 +87,9 @@ error_reporting(0);
                         <h2 class="checkout-title">YOUR ORDER</h2>
                         <div class="total-amount">
                             <h4 class="title">Product <span>Total</span></h4>
+                            <?php foreach ($item_cart as $row) {
+                              $rowid = $row['rowid'];
+                            }?>
                             <?php
                              $id = $_POST['id'];
                              $qty = $_POST['qty'];
@@ -96,6 +99,7 @@ error_reporting(0);
                              $ProductID[] = $row->ProductID;
                              $Price[] = $row->Price;
                              $weight[] = $row->weight;
+                             $stock[] = $row->Stock;
                              }
                             
                             for ($x = 0; $x < $count; $x++) {
@@ -126,13 +130,17 @@ error_reporting(0);
                             <h4 class="subtotal">Total  <span id="total">$ 615.00</span></h4>
                         </div>
                         <div class="check-method">
+                          <form action="payment" method="post">
                             <?php
                             for ($x = 0; $x < $count; $x++) {
+                              $sisastock[$x] = $stock[$x] - $qty[$x];
                               echo "
-                              <input type='ProductName[]' value='".$ProductID[$x]."'><br>
-                              <input type='ProductID[]' value='".$ProductName[$x]."'><br>
-                              <input type='qty[]' value='".$qty[$x]."'><br>
-                              <input type='Priceamount[]' value='".$Price[$x] * $qty[$x]."'><br>
+                              <input type='' name='ProductName[]' value='".$ProductName[$x]."'><br>
+                              <input type='' name='ProductID[]' value='".$ProductID[$x]."'><br>
+                              <input type='' name='qty[]' value='".$qty[$x]."'><br>
+                              <input type='' name='Sisa[]' value='".$sisastock[$x]."'><br>
+                              <input type='' name='rowid[]' value='".$row['rowid'][$x]."'><br>
+                              <input type='' name='PriceAmount[]' value='".$Price[$x] * $qty[$x]."'><br>
 
                               
 
@@ -150,6 +158,7 @@ error_reporting(0);
                             <input type='' id='pengiriman_value' value=''><br>
                             <input type='' id='total_value' value=''><br>
                             <button type="submit">Bayar</button>
+                          </form>
                         </div>
                     </div>
                 </div>
