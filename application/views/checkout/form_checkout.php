@@ -31,17 +31,17 @@ error_reporting(0);
             <div class="row">
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <div class="checkout-left">
-                        <h2 class="checkout-title">BILLING DETAILS</h2>
-                        <div class="billing-details">
+                        <h2 class="checkout-title">INFORMASI PEMESANAN</h2>
+                        <div class="billing-details" id="form-input">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" placeholder="Name">
+                                    <input type="text" placeholder="Name" id="name-form">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" placeholder="E-mail">
+                                    <input type="email" placeholder="E-mail" id="email-form">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="tel" placeholder="Phone">
+                                    <input type="tel" placeholder="Phone" id="phone-form">
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <select id="province" class="input-form-pembelian">
@@ -63,10 +63,10 @@ error_reporting(0);
                                     </select>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea placeholder="Order Notes Here"></textarea>
+                                    <textarea name="address" placeholder="Masukkan Alamat Lengkap"></textarea>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea placeholder="Order Notes Here"></textarea>
+                                    <textarea name="notes" placeholder="Catatan untuk pembeli"></textarea>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                   <select class="input-form-pembelian" id="courier">
@@ -93,6 +93,7 @@ error_reporting(0);
                              $count = count($id);
                              foreach ($list_belanja as $row) {
                              $ProductName[] = $row->ProductName;
+                             $ProductID[] = $row->ProductID;
                              $Price[] = $row->Price;
                              $weight[] = $row->weight;
                              }
@@ -125,45 +126,30 @@ error_reporting(0);
                             <h4 class="subtotal">Total  <span id="total">$ 615.00</span></h4>
                         </div>
                         <div class="check-method">
-                            <div class="method-1">
-                                <input type="radio" name="gender" value="male" checked> <span>DIRECT BANK TRANSFER</span>
-                            </div>
-                            <div class="method-2">
-                                <input type="radio" name="gender" value="female"> <span>CHEQUE PAYMENT</span>
-                            </div>
-                            <div class="method-3">
-                                <input type="radio" name="gender" value="other"> <span>PAYPAL</span>
-                            </div>
                             <?php
-                            $words = sha1('75000x5c7d9d2i8w5000001');
-                            print_r($words);
-                             ?>
-                            <FORM NAME="order" METHOD="Post" ACTION="https://apps.myshortcart.com/payment/request-payment/" >
-                            <input type=hidden name="BASKET" value="Gold,70000.00,1,70000.00;Administration fee,5000.00,1,5000.00">
-                            <input type=hidden name="STOREID" value="10772245">
-                            <input type=hidden name="TRANSIDMERCHANT" value="000001">
-                            <input type=hidden name="AMOUNT" value="75000">
-                            <input type=hidden name="URL" value="http://birautama.com/">
-                            <input type=hidden name="WORDS" value=<?php echo $words ?>>
-                            <input type=hidden name="CNAME" value="Buayo Putra">
-                            <input type=hidden name="CEMAIL" value="buayo@gmail.com">
-                            <input type=hidden name="CWPHONE" value="0210000011">
-                            <input type=hidden name="CHPHONE" value="0210980901">
-                            <input type=hidden name="CMPHONE" value="081298098090">
-                            <input type=hidden name="CADDRESS" value="Jl. Jendral Sudirman Plaza Asia Office Park Unit 3">
-                            <input type=hidden name="CZIPCODE" value="12345">
-                            <input type=hidden name="BIRTHDATE" value="1988-06-16">
-                            <input type=hidden name="CADDRESS" value="Plaza Asia Office Park Unit 3 Kav 59" >
-                            <input type=hidden name="CCITY" value="JAKARTA">
-                            <input type=hidden name="CSTATE" value="DKI">
-                            <input type=hidden name="CCOUNTRY" value="20">
-                            <input type=hidden name="SADDRESS" value="Pengadegan Barat V no 17F">
-                            <input type=hidden name="SZIPCODE" value="12217">
-                            <input type=hidden name="SCITY" value="JAKARTA">
-                            <input type=hidden name="SSTATE" value="DKI">
-                            <input type=hidden name="SCOUNTRY" value="784">
+                            for ($x = 0; $x < $count; $x++) {
+                              echo "
+                              <input type='ProductName[]' value='".$ProductID[$x]."'><br>
+                              <input type='ProductID[]' value='".$ProductName[$x]."'><br>
+                              <input type='qty[]' value='".$qty[$x]."'><br>
+                              <input type='Priceamount[]' value='".$Price[$x] * $qty[$x]."'><br>
+
+                              
+
+                              ";
+                            }
+                            ?>
+                            <input type='' id='name-form-hidden' value=''><br>
+                            <input type='' id='email-form-hidden' value=''><br>
+                            <input type='' id='phone-form-hidden' value=''><br>
+                            <input type='' id='province-form-hidden' value=''><br>
+                            <input type='' id='cityselect-form-hidden' value=''><br>
+
+                            <input type='' id='kurir' value=''><br>
+                            <input type='' id='layanan' value=''><br>
+                            <input type='' id='pengiriman_value' value=''><br>
+                            <input type='' id='total_value' value=''><br>
                             <button type="submit">Bayar</button>
-                            </FORM>
                         </div>
                     </div>
                 </div>
@@ -188,12 +174,25 @@ $(document).ready(function(){
         pricebeforeongkir += +$(this).text();
       });
       $('#total').text(pricebeforeongkir);
+      $('#total_value').val(pricebeforeongkir);
 
     $("#province").change(function(){
       var city = $( "#province" ).val();
       console.log(city); 
       $("#city").load("request_city?city=" + city + "");
     });
+    $("#form-input").change(function(){
+      var nameform = $( "#name-form" ).val();
+      var emailform = $( "#email-form" ).val();
+      var phoneform = $( "#phone-form" ).val();
+      var provinceform = $( "#province option:selected" ).text();
+      var cityform = $( "#cityselect option:selected" ).text();
+      $('#name-form-hidden').val(nameform);
+      $('#email-form-hidden').val(emailform);
+      $('#phone-form-hidden').val(phoneform);
+      $('#province-form-hidden').val(provinceform);
+      $('#cityselect-form-hidden').val(cityform);
+    })
     $("#courier").change(function(){
       var destination = $( "#cityselect" ).val();
       console.log(destination);

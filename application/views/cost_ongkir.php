@@ -57,14 +57,20 @@ curl_close($curl);
 } ?>
 </div>
 <script>
+
 	$('#kurir-change').on('change', function() {
 		var xxx = $('input[name=pack-courier]:checked').val();
 		var obj = jQuery.parseJSON(xxx);	
   	 $('#pengiriman').text(obj.harga);
+     $('#pengiriman_value').val(obj.harga);
+     $('#layanan').val(obj.layanan);
+     var kurir = $( "#courier" ).val();
+      $('#kurir').val(kurir); 
   	 var sum = 0;
     	$('.checkout-total').each(function(){
         sum += +$(this).text();
     	});
-    	$('#total').text(sum.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')); 
+    	$('#total').text(sum.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+      $('#total_value').val(sum);  
 });
 </script>
